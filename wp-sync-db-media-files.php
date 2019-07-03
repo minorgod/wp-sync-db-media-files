@@ -12,6 +12,8 @@ Network: True
 require_once 'version.php';
 $GLOBALS['wpsdb_meta']['wp-sync-db-media-files']['folder'] = basename( plugin_dir_path( __FILE__ ) );
 
+define('WPSDB_SYNC_MEDIA_FILES_PLUGIN_FILE', __FILE__);
+
 function wp_sync_db_media_files_loaded() {
 	if ( ! class_exists( 'WPSDB_Addon' ) ) return;
 

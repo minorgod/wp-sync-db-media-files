@@ -495,7 +495,7 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 	}
 
 	function get_plugin_url() {
-		return trailingslashit( $GLOBALS['wpsdb_meta']['wp-sync-db-media-files']['folder'] );
+		return trailingslashit( plugin_dir_path(WPSDB_SYNC_MEDIA_FILES_PLUGIN_FILE) ) . trailingslashit( $this->plugin_folder_name );
 	}
 
 	function load_assets() {
