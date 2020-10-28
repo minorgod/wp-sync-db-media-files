@@ -501,8 +501,7 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 	}
 
 	function load_assets() {
-		$plugins_url = trailingslashit( plugins_url() ) . trailingslashit( $this->plugin_folder_name );
-		$src = $plugins_url . 'asset/js/script.js';
+		$src = plugins_url('asset/js/script.js', WPSDB_SYNC_MEDIA_FILES_PLUGIN_FILE);
 		$version = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? time() : $this->plugin_version;
 		wp_enqueue_script( 'wp-sync-db-media-files-script', $src, array( 'jquery', 'wp-sync-db-common', 'wp-sync-db-hook', 'wp-sync-db-script' ), $version, true );
 
@@ -514,7 +513,6 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 			'media_files'				=> __( "Media Files", 'wp-sync-db-media-files' ),
 			'migrating_media_files'		=> __( "Migrating media files", 'wp-sync-db-media-files' ),
 		) );
-
 	}
 
 	function establish_remote_connection_data( $data ) {
