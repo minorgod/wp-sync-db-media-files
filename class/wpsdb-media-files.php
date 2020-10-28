@@ -253,7 +253,7 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 		$body .= $this->array_to_multipart( $post_args );
 
 		$args['body'] = $body;
-		$ajax_url = trailingslashit( $_POST['url'] ) . 'wp-admin/admin-ajax.php';
+		$ajax_url = trailingslashit( $_POST['url'] ) . $GLOBALS['wpsdb_wp_admin'].'/admin-ajax.php';
 		$response = $this->remote_post( $ajax_url, '', __FUNCTION__, $args );
 		$response = $this->verify_remote_post_response( $response );
 
@@ -327,7 +327,7 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 		$data['temp_prefix'] = $this->temp_prefix;
 		$data['intent'] = $_POST['intent'];
 		$data['sig'] = $this->create_signature( $data, $_POST['key'] );
-		$ajax_url = trailingslashit( $_POST['url'] ) . 'wp-admin/admin-ajax.php';
+		$ajax_url = trailingslashit( $_POST['url'] ) . $GLOBALS['wpsdb_wp_admin'].'/admin-ajax.php';
 		$response = $this->remote_post( $ajax_url, $data, __FUNCTION__ );
 		$response = $this->verify_remote_post_response( $response );
 
@@ -359,7 +359,7 @@ class WPSDB_Media_Files extends WPSDB_Addon {
 				$data['action'] = 'wpsdbmf_remove_local_attachments';
 				$data['remote_attachments'] = serialize( $local_attachments );
 				$data['sig'] = $this->create_signature( $data, $_POST['key'] );
-				$ajax_url = trailingslashit( $_POST['url'] ) . 'wp-admin/admin-ajax.php';
+				$ajax_url = trailingslashit( $_POST['url'] ) . $GLOBALS['wpsdb_wp_admin'].'/admin-ajax.php';
 				$response = $this->remote_post( $ajax_url, $data, __FUNCTION__ );
 				// the response is ignored here (for now) as this is not a critical task
 			}

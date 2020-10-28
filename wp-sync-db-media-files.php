@@ -11,6 +11,7 @@ Network: True
 
 require_once 'version.php';
 $GLOBALS['wpsdb_meta']['wp-sync-db-media-files']['folder'] = basename( plugin_dir_path( __FILE__ ) );
+$GLOBALS['wpsdb_wp_admin'] = defined('WP_ADMIN_DIR') ? WP_ADMIN_DIR : 'wp-admin';
 
 function wp_sync_db_media_files_loaded() {
 	if ( ! class_exists( 'WPSDB_Addon' ) ) return;
